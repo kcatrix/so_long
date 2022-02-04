@@ -6,7 +6,8 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <mlx.h>
 
-int		main(int argc, char *argv[]);
+int	main(void);
 
 #endif

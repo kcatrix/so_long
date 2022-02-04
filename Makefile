@@ -6,7 +6,7 @@
 #    By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 13:54:33 by kcatrix           #+#    #+#              #
-#    Updated: 2022/02/04 13:54:42 by kcatrix          ###   ########.fr        #
+#    Updated: 2022/02/04 14:12:09 by kcatrix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,10 @@ SRC = ./srcs/main.c
 all: $(NAME)
 
 $(NAME): $(SRC) 
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME) 
+	$(CC) $(CFLAGS) $(SRC) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) 
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
