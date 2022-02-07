@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+         #
+#    By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 13:54:33 by kcatrix           #+#    #+#              #
-#    Updated: 2022/02/06 13:14:18 by kevyn            ###   ########.fr        #
+#    Updated: 2022/02/07 12:33:27 by kcatrix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 NAME = so_long
 
@@ -29,19 +29,17 @@ SRC = ./srcs/main.c
 MLXDIR = $(LIBPATH)/mlx
 APMLX = $(MLXDIR)/mlx.a
 
-LDLIBS = $(APMLX) -Lmlx -lmlx -framework OpenGL -framework AppKit
+LDLIBS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME): $(SRC) 
-	@$(MAKE) -j -s --no-print-directory -C mlx/
-	$(CC) $(LDLIBS) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(LDLIBS) $(SRC) -o $(NAME)
 
 %.o: %.c
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) -c $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
-	@$(MAKE) -s --no-print-directory -C mlx/ clean
 	$(RM) $(OBJ)
 
 fclean: clean

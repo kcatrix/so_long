@@ -6,19 +6,11 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/04 16:02:39 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/07 15:00:19 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -26,33 +18,41 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
 }
 
-int	render_next_frame(void *YourStruct);
+int	deal_key(int key, t_data *img)
+{
+	img->fake = 0;
+	if(key == 53)
+		exit('exit');
+	return (0);
+}
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
 	t_data	img;
 	int x;
 	int y;
+	int		img_width;
+	int		img_height;
+	char	*relative_path = "/Users/kcatrix/Desktop/so_long/includes/img/linkk.xpm";
 
-	x = 50;
-	y = 50;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	
-		img.img = mlx_new_image(mlx, 1920, 1080);
-		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	x = 500;
+	y = 500;
+	img.mlx = mlx_init();
+	img.mlx_win = mlx_new_window(img.mlx, 1920, 1080, "Hello world!");
+	img.img = mlx_new_image(img.mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	while(x != 500)
+	while(x != 1920)
 	{
 		my_mlx_pixel_put(&img, x, y, 0x0000FF00);
-		//mlx_loop_hook(mlx, render_next_frame(&img), &img);
+		//mlx_loop_hook(img.mlx, render_next_frame(&img), &img);
 		x++;
-		y++;
 	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
+	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	mlx_key_hook(img.mlx_win, deal_key, &img);
+	mlx_loop(img.mlx);
 }
