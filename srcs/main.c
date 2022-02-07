@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/07 15:00:19 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/07 15:20:34 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ int	deal_key(int key, t_data *img)
 int	main(void)
 {
 	t_data	img;
-	int x;
-	int y;
+	int 	x;
 	int		img_width;
 	int		img_height;
 	char	*relative_path = "/Users/kcatrix/Desktop/so_long/includes/img/linkk.xpm";
 
 	x = 500;
-	y = 500;
 	img.mlx = mlx_init();
 	img.mlx_win = mlx_new_window(img.mlx, 1920, 1080, "Hello world!");
 	img.img = mlx_new_image(img.mlx, 1920, 1080);
@@ -47,7 +45,7 @@ int	main(void)
 								&img.endian);
 	while(x != 1920)
 	{
-		my_mlx_pixel_put(&img, x, y, 0x0000FF00);
+		my_mlx_pixel_put(&img, x, 500, 0x0000FF00);
 		//mlx_loop_hook(img.mlx, render_next_frame(&img), &img);
 		x++;
 	}
