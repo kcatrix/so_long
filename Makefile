@@ -1,50 +1,54 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/04 13:54:33 by kcatrix           #+#    #+#              #
-#    Updated: 2022/02/07 12:33:27 by kcatrix          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
-NAME = so_long
-
-MY_CPPFLAGS = -I$(LIBPATH) -I$(MLXTDIR)
+MY_CPPFLAGS = -I$(LIBPATH) -I$(LIBFTDIR) -I$(GNLDIR)
 
 CPPFLAGS = $(MY_CPPFLAGS)
 
+NAME = so_long
+
+SRCDIR = ./srcs
+
+SRC = $(wildcard $(SRCDIR)/*.c)
+
+LIBPATH = ./lib
+
+GNLDIR = $(LIBPATH)/GNL
+APGNL = $(GNLDIR)/get_next_line.a
+
+LIBFTDIR = $(LIBPATH)/libft
+APLIBFT = $(LIBFTDIR)/libft.a
+
 OBJ = $(SRC:.c=.o)
 
-SRC = ./srcs/main.c 
+LDLIBS = $(APGNL) $(APLIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-MLXDIR = $(LIBPATH)/mlx
-APMLX = $(MLXDIR)/mlx.a
+LDLIBS2 = 
 
-LDLIBS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+all:
+	@$(MAKE) -j $(NAME)	
 
-all: $(NAME)
+$(NAME): $(SRC)
+	@$(MAKE) -j -s --no-print-directory -C lib/libft/
+	@$(MAKE) -j -s --no-print-directory -C lib/gnl/
+	$(CC) $(LDLIBS) $(CFLAGS) $(SRC) $(APLIBFT) $(APGNL) -o $(NAME)
 
-$(NAME): $(SRC) 
-	$(CC) $(CFLAGS) $(LDLIBS) $(SRC) -o $(NAME)
-
-%.o: %.c
-	$(CC) -c $(CFLAGS) -Imlx -c $< -o $@
+%.o : %.c
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(SRC) $< -o $@ 
 
 clean:
+	@$(MAKE) -s --no-print-directory -C lib/libft/ clean
+	@$(MAKE) -s --no-print-directory -C lib/gnl/ clean 
 	$(RM) $(OBJ)
 
 fclean: clean
+	@$(MAKE) -s --no-print-directory -C lib/libft/ fclean
+	@$(MAKE) -s --no-print-directory -C lib/gnl/ fclean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: pipex all clean fclean re
+.PHONY: all clean fclean re

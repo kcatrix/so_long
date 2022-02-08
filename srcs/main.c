@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/07 16:13:10 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/08 09:38:45 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	main(void)
 {
 	t_data	img;
 	int 	x;
-	int		img_width;
-	int		img_height;
-	char	*relative_path = "/Users/kcatrix/Downloads/Sprite.xpm";
+	//int		img_width;
+	//int		img_height;
+	//char	*relative_path = "/Users/kcatrix/Downloads/Sprite.xpm";
 
 	x = 500;
 	img.mlx = mlx_init();
@@ -49,7 +49,7 @@ int	main(void)
 		//mlx_loop_hook(img.mlx, render_next_frame(&img), &img);
 		x++;
 	}
-	img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
+	//img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 200, 200);
 	mlx_key_hook(img.mlx_win, deal_key, &img);
 	mlx_loop(img.mlx);
