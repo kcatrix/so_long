@@ -3,88 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbuan <marvin@42.fr>                       +#+  +:+       +#+        */
+
+/*   By: acolin <acolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 08:55:49 by jbuan             #+#    #+#             */
-/*   Updated: 2021/05/31 15:21:27 by jbuan            ###   ########.fr       */
+/*   Created: 2021/10/20 09:24:18 by acolin            #+#    #+#             */
+/*   Updated: 2021/10/22 14:32:03 by acolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	compteur_sot(char *stock)
+char	*clear_buf(char *buffer, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+	return (buffer);
+}
+
+int	check_line(char *buffer)
 {
 	int	i;
 
 	i = 0;
-	while (stock[i])
+	while (buffer[i] != '\0')
 	{
-		if (stock[i] == '\n')
-			return (i);
+		if (buffer[i] == '\n')
+			return (1);
 		i++;
 	}
-	return (-1);
-}
-
-int	etapres(char **stock, char **line, int i)
-{
-	char	*tmp;
-	int		len;
-
-	(*stock)[i] = '\0';
-	*line = ft_gnl_strdup(*stock);
-	len = ft_strlen(*stock + i + 1);
-	if (len == 0)
-	{
-		free(*stock);
-		*stock = 0;
-		return (1);
-	}
-	tmp = ft_gnl_strdup(*stock + i + 1);
-	free(*stock);
-	*stock = tmp;
-	return (1);
-}
-
-int	vraiment(char **stock, char **line, int bitslus)
-{
-	int	i;
-
-	if (bitslus < 0)
-		return (-1);
-	i = compteur_sot(*stock);
-	if ((*stock) && (i >= 0))
-		return (etapres(stock, line, i));
-	else if (*stock)
-	{
-		*line = *stock;
-		*stock = 0;
-		return (0);
-	}
-	*line = ft_gnl_strdup("");
 	return (0);
 }
 
-int	get_next_line(int fd, char **line)
+char	*get_line(char *buffer, char *save)
 {
-	static char	*stock;
-	int			i;
-	int			bitslus;
-	char		buff[BUFFER_SIZE + 1];
+	char	*line;
+	int		i;
 
-	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
-		return (-1);
-	bitslus = BUFFER_SIZE;
-	while (bitslus == BUFFER_SIZE)
+	i = 0;
+	while (buffer[i] != '\n' && buffer[i] != '\0')
+		i++;
+	line = malloc(sizeof(char) * i + 1);
+	ft_strlcpy(line, buffer, i + 2);
+	ft_strlcpy(save, buffer + i + 1, ft_strlen(buffer));
+	line[i + 1] = '\0';
+	if (line[0] == '\0')
 	{
-		bitslus = read(fd, buff, BUFFER_SIZE);
-		if (bitslus < 0)
-			return (-1);
-		buff[bitslus] = '\0';
-		stock = ft_gnl_strjoin(stock, buff);
-		i = compteur_sot(stock);
-		if (i >= 0)
-			return (etapres(&stock, line, i));
+		free(line);
+		return (NULL);	
 	}
-	return (vraiment(&stock, line, bitslus));
+	return (line);
+}
+
+char	*cat_buf(char *dst, char *src)
+{
+	char	*tmp;
+	size_t	tmp_size;
+
+	tmp = dst;
+	tmp_size = ft_strlen(tmp);
+	ft_strlcpy(dst, tmp, (tmp_size + BUFFER_SIZE + 1));
+	ft_strlcat(dst, src, (tmp_size + BUFFER_SIZE + 1));
+	return (dst);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*buffer;
+	char		*buff_stock;
+	static char	save[BUFFER_SIZE];
+
+	if (fd < 0)
+		return (NULL);
+	if (BUFFER_SIZE == 0)
+		return (NULL);
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buff_stock = save;
+	while (read(fd, buffer, BUFFER_SIZE) > 0)
+	{
+		if (buffer[0] == '\0')
+			return (NULL);
+		if(check_buffer(buffer, BUFFER_SIZE) == NULL)
+			return (NULL);
+		cat_buf(buff_stock, buffer);
+		clear_buf(buffer, BUFFER_SIZE);
+		if (check_line(buff_stock))
+			break ;
+	}
+	free(buffer);
+	return (get_line(buff_stock, save));
 }

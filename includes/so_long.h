@@ -4,8 +4,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include "../lib/GNL/get_next_line.h"
+# include "../lib/libft/libft.h"
 # include "../mlx/mlx.h"
 
 typedef struct	s_data {
@@ -20,5 +23,6 @@ typedef struct	s_data {
 }				t_data;
 
 int	main(void);
+void	parse();
 
 #endif

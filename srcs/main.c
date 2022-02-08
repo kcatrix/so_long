@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/08 09:38:45 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/08 12:57:47 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	deal_key(int key, t_data *img)
 
 int	main(void)
 {
-	t_data	img;
+	parse();
+	/*t_data	img;
 	int 	x;
 	//int		img_width;
 	//int		img_height;
@@ -52,5 +53,5 @@ int	main(void)
 	//img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 200, 200);
 	mlx_key_hook(img.mlx_win, deal_key, &img);
-	mlx_loop(img.mlx);
+	mlx_loop(img.mlx);*/
 }

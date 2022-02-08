@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbuan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: acolin <acolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 08:48:58 by jbuan             #+#    #+#             */
-/*   Updated: 2021/11/24 19:01:37 by juan             ###   ########.fr       */
+/*   Created: 2021/10/20 09:24:41 by acolin            #+#    #+#             */
+/*   Updated: 2021/10/22 17:04:33 by acolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,14 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
-
-int		get_next_line(int fd, char **line);
-int		compteur_sot(char *stock);
-int		etapres(char **stock, char **line, int i);
-int		vraiment(char **stock, char **line, int bitslus);
+char	*get_next_line(int fd);
+char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
-char	*ft_gnl_strdup(char *s1);
-char	*ft_gnl_strjoin(char *s1, char *s2);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+void	reset(char *buffer, size_t size);
+char	*check_buffer(char *buffer, size_t size);
 
 #endif

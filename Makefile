@@ -2,7 +2,7 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror $(BUFFER)
 
 MY_CPPFLAGS = -I$(LIBPATH) -I$(LIBFTDIR) -I$(GNLDIR)
 
@@ -24,9 +24,9 @@ APLIBFT = $(LIBFTDIR)/libft.a
 
 OBJ = $(SRC:.c=.o)
 
-LDLIBS = $(APGNL) $(APLIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit
+LDLIBS = $(APGNL) $(APLIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
-LDLIBS2 = 
+BUFFER = -D BUFFER_SIZE=100
 
 all:
 	@$(MAKE) -j $(NAME)	
