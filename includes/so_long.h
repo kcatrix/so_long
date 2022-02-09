@@ -27,6 +27,7 @@ int		main(int argc, char **argv);
 int		parse(t_data *img, char *arg);
 int		avance(t_data *img, char *arg);
 int		verif_ber(char *arg, int i);
-
+void	stock_map(t_data *img);
+int		verif_ligne(char **str, t_data *img);
 
 #endif

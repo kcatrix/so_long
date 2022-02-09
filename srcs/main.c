@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/09 11:05:12 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/09 14:59:53 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	deal_key(int key, t_data *img)
 int	main(int argc, char **argv)
 {
 	t_data	img;
+	if (argc != 2)
+		return (0);
 	parse(&img, argv[1]);
 	/*
 	int 	x;
