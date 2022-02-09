@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/08 12:57:47 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/09 11:05:12 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int	deal_key(int key, t_data *img)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	parse();
-	/*t_data	img;
+	t_data	img;
+	parse(&img, argv[1]);
+	/*
 	int 	x;
 	//int		img_width;
 	//int		img_height;

@@ -16,13 +16,17 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*mlx_win;
 	char	*addr;
+	int		nombredeligne;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 	int		fake;
 }				t_data;
 
-int	main(void);
-void	parse();
+int		main(int argc, char **argv);
+int		parse(t_data *img, char *arg);
+int		avance(t_data *img, char *arg);
+int		verif_ber(char *arg, int i);
+
 
 #endif
