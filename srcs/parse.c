@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:09:03 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/09 15:15:51 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/10 11:35:16 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	parse(t_data *img, char *arg)
 		write(1, "erreur dans le nom de la map", 28);
 		return(0);
 	}
-	stock_map(img);
+	if (stock_map(img) == 0)
+		return (0);
 	return(1);
 }
 
