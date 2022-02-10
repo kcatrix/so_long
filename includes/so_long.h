@@ -29,7 +29,9 @@ int		parse(t_data *img, char *arg);
 int		avance(t_data *img, char *arg);
 int		verif_ber(char *arg, int i);
 int		stock_map(t_data *img);
-int	verif_wall(char **str, t_data *img);
-int		verif_ligne_first_last(char **str, t_data *img);
+int		verif_wall(char **str, t_data *img);
+int		verif_ligne_first(char **str, t_data *img);
+int		verif_ligne_last(char **str, t_data *img);
+int		verif_nbcaract(char **str, t_data *img);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/10 14:56:51 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/10 15:45:10 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@ int	stock_map(t_data *img)
 	}
 	j = 0;
 	close(fd);
-	if (verif_ligne_first_last(str, img) == 0)
+	if (verif_ligne_first(str, img) == 0)
 		return(0);
 	return (1);
 }
 
-int	verif_ligne_first_last(char **str, t_data *img)
+int	verif_ligne_first(char **str, t_data *img)
 {
 	int i;
-	int j;
 	
 	i = 0;
 	while(str[0][i] != '\n' && str[0][i])
@@ -57,8 +56,18 @@ int	verif_ligne_first_last(char **str, t_data *img)
 		i++;
 	}
 	img->nombredecarct = i;
-	j = img->nombredeligne;
+	if (verif_ligne_last(str, img) == 0)
+		return (0);
+	return (1);
+}
+
+int	verif_ligne_last(char **str, t_data *img)
+{
+	int j;
+	int i;
+
 	i = 0;
+	j = img->nombredeligne;
 	while (str[j - 1][i])
 	{
 		if (str[j - 1][i] != '1')
@@ -70,7 +79,7 @@ int	verif_ligne_first_last(char **str, t_data *img)
 	}
 	if (verif_wall(str, img) == 0)
 		return (0);	
-	return (1);
+	return(1);
 }
 
 int	verif_wall(char **str, t_data *img)
@@ -94,6 +103,30 @@ int	verif_wall(char **str, t_data *img)
 		}
 		i++;
 	}
+	if (verif_nbcaract(str, img) == 0)
+		return (0);
 	return (1);
 }
-//verifnbcaract
+int	verif_nbcaract(char **str, t_data *img)
+{
+	int i;
+	int y;
+
+	i = 0;
+	y = 0;
+	while (i < img->nombredeligne)
+	{
+		while(str[i][y] != '\n' && str[i][y])
+		{
+			if (y >= img->nombredecarct)
+			{
+				printf("erreur nombre de caractere par ligne");
+				return (0);
+			}
+			y++;
+		}
+		y = 0;
+		i++;
+	}
+	return (1);
+}
