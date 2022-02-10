@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/10 13:36:38 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/10 14:56:51 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	stock_map(t_data *img)
 	char *s;
 	
 	i = 0;
-	
 	fd = open("map/map.ber", O_RDONLY);
 	while (get_next_line(fd, &s))
 		i++;
@@ -48,7 +47,6 @@ int	verif_ligne_first_last(char **str, t_data *img)
 	int j;
 	
 	i = 0;
-
 	while(str[0][i] != '\n' && str[0][i])
 	{
 		if (str[0][i] != '1')
@@ -70,7 +68,32 @@ int	verif_ligne_first_last(char **str, t_data *img)
 		}
 		i++;
 	}
-	if (i != img->nombredecarct)
-		printf("erreur sur la derniere ligne");
+	if (verif_wall(str, img) == 0)
+		return (0);	
 	return (1);
 }
+
+int	verif_wall(char **str, t_data *img)
+{
+	int i;
+	int y;
+
+	i = 0;
+	y = 0;
+	while(i < img->nombredeligne)
+	{
+		if (str[i][0] != '1')
+		{
+			printf("erreur de mur");
+			return (0);
+		}
+		if (str[i][img->nombredecarct - 1] != '1')
+		{
+			printf("erreur de mur");
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+//verifnbcaract
