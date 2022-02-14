@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: operculesanguinaire <operculesanguinair    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:09:03 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/10 11:35:16 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/14 14:52:40 by operculesan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,43 @@ int	verif_ber(char *arg, int i)
 		return 0;
 	if (arg[++j] != 'r')
 		return 0;
+	return(1);
+}
+
+int	verif_item(char **str, t_data *img)
+{
+	int i;
+	int y;
+	
+	i = 0;
+	y = 0;
+	img->fake = 0;
+	img->c = 0;
+	img->e = 0;
+	img->p_c = 0;
+	while (i < img->nombredeligne)
+	{
+		while(str[i][y] != '\n' && str[i][y])
+		{
+			if (str[i][y] == 'C')
+				img->c++;
+			if (str[i][y] == 'E')
+				img->e++;
+			if (str[i][y] == 'P')
+			{
+				img->fake++;
+				img->p_l = i;
+				img->p_c = y;
+			}
+			y++;
+		}
+		y = 0;
+		i++;
+	}
+	if (img->c == 0 || img->e == 0 || img->fake == 0)
+	{
+		printf("Erreur manque un ou plusieur caractéres\n");
+		return(0);
+	}
 	return(1);
 }

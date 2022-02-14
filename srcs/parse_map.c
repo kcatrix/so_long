@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: operculesanguinaire <operculesanguinair    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/10 15:45:10 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/14 16:08:55 by operculesan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	stock_map(t_data *img)
 	i = 0;
 	fd = open("map/map.ber", O_RDONLY);
 	while (get_next_line(fd, &s))
+	{
+		if (s != NULL)
+			free(s);
 		i++;
+	}
 	img->nombredeligne = i;
 	close(fd);
 	str = malloc(sizeof(char *) * i);
@@ -56,6 +60,7 @@ int	verif_ligne_first(char **str, t_data *img)
 		i++;
 	}
 	img->nombredecarct = i;
+	img->map = str;
 	if (verif_ligne_last(str, img) == 0)
 		return (0);
 	return (1);
@@ -107,6 +112,7 @@ int	verif_wall(char **str, t_data *img)
 		return (0);
 	return (1);
 }
+
 int	verif_nbcaract(char **str, t_data *img)
 {
 	int i;
@@ -128,5 +134,7 @@ int	verif_nbcaract(char **str, t_data *img)
 		y = 0;
 		i++;
 	}
+	if (verif_item(str, img) == 0)
+			return (0);
 	return (1);
 }

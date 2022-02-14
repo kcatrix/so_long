@@ -21,7 +21,12 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		p_l;
+	int		p_c;
+	int		e;
+	int		c; 
 	int		fake;
+	char	**map;
 }				t_data;
 
 int		main(int argc, char **argv);
@@ -33,5 +38,7 @@ int		verif_wall(char **str, t_data *img);
 int		verif_ligne_first(char **str, t_data *img);
 int		verif_ligne_last(char **str, t_data *img);
 int		verif_nbcaract(char **str, t_data *img);
+int		verif_item(char **str, t_data *img);
+void    stock_map_s(char **str, t_data *img);
 
 #endif
