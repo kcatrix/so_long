@@ -18,6 +18,8 @@ typedef struct	s_data {
 	char	*addr;
 	int		nombredeligne;
 	int		nombredecarct;
+	int		ligne_win;
+	int		col_win;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

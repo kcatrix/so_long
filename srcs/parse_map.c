@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: operculesanguinaire <operculesanguinair    +#+  +:+       +#+        */
+/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/14 16:08:55 by operculesan      ###   ########.fr       */
+/*   Updated: 2022/02/15 11:53:40 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
