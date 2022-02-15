@@ -26,7 +26,8 @@ typedef struct	s_data {
 	int		p_l;
 	int		p_c;
 	int		e;
-	int		c; 
+	int		c;
+	int 	taille_img;
 	int		fake;
 	char	**map;
 }				t_data;
@@ -42,5 +43,7 @@ int		verif_ligne_last(char **str, t_data *img);
 int		verif_nbcaract(char **str, t_data *img);
 int		verif_item(char **str, t_data *img);
 void    stock_map_s(char **str, t_data *img);
+void	affiche_wall(t_data *img);
+void	create_windows(t_data *img);
 
 #endif
