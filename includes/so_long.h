@@ -47,8 +47,11 @@ int		verif_ligne_last(char **str, t_data *img);
 int		verif_nbcaract(char **str, t_data *img);
 int		verif_item(char **str, t_data *img);
 void    stock_map_s(char **str, t_data *img);
+void	push_destroy(t_data *img);
 void	affiche_wall(t_data *img);
 void	affiche_caractere(t_data *img);
+void	affiche_item(t_data *img);
+void	affiche_exit(t_data *img);
 void	create_windows(t_data *img);
 
 #endif
