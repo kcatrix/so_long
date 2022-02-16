@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/15 11:53:40 by kcatrix          ###   ########.fr       */
+/*   Updated: 2022/02/16 12:00:38 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int	verif_ligne_first(char **str, t_data *img)
 	}
 	img->nombredecarct = i;
 	img->map = str;
+	img->size_img = 32;
+	img->x = 0;
+	img->z = 0;
 	if (verif_ligne_last(str, img) == 0)
 		return (0);
 	return (1);
