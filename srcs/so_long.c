@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:45:10 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/16 16:10:20 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/16 17:30:02 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	create_windows(t_data *img)
 				img->ligne_win, "Hello world!");
 	}
 	img->taille_img = 32;
+	//affiche_back(img);
+	img->z = 0;
 	affiche_wall(img);
 	img->z = 0;
 	affiche_caractere(img);
