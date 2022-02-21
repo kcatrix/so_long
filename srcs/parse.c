@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:09:03 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 17:08:53 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:49:12 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	parse(t_data *img, char *arg)
 		return (0);
 	}
 	if (stock_map(img, arg) == 0)
+	{
+		if (img->nombredeligne == 0)
+			printf("Erreur aucune données dans la map\n");
 		return (0);
+	}
 	return (1);
 }
 

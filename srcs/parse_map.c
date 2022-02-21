@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/21 18:17:12 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:45:42 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	stock_map(t_data *img, char *arg)
 	}
 	img->nombredeligne = i;
 	close(fd);
-	if (stock_map2(i, fd, img, arg) == 0)
+	if (img->nombredeligne == 0 || stock_map2(i, fd, img, arg) == 0)
 		return (0);
 	return (1);
 }
