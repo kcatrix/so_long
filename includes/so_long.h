@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:17:56 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 18:16:23 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:30:03 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_data
 	char	*relative_path;
 	char	**map;
 	int		i;
-	int 	y;
+	int		y;
 }				t_data;
 
 int		main(int argc, char **argv);
