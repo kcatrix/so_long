@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/16 17:26:49 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/20 23:14:09 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	deal_key(int key, t_data *img)
 		exit('exit');
 	if(key == 13)
 	{
+		mlx_clear_window(img->mlx, img->mlx_win);
+		img->p_l_save = img->p_l;
+		img->p_c_save = img->p_c;
+		img->map[img->p_l][img->p_c] = '0';
 		img->map[img->p_l][img->p_c + 32] = 'P';
 		create_windows(img);
 	}
@@ -45,9 +49,8 @@ int	main(int argc, char **argv)
 	parse(&img, argv[1]);
 	img.fake = 0;
 	create_windows(&img);
-	img.map[img.p_l][img.p_c] = '0';
 	//img.map[img.p_l][img.p_c + 32] = 'P';
-	create_windows(&img);
+	//create_windows(&img);
 	//mlx_loop_hook(img.mlx, render_next_frame(&img), &img);
 	mlx_key_hook(img.mlx_win, deal_key, &img);
 	mlx_loop(img.mlx);

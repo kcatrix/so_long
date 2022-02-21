@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:45:10 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/16 17:30:02 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/20 23:14:46 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void	create_windows(t_data *img)
 	img->ligne_win = img->nombredeligne * 32;
 	img->col_win = img->nombredecarct * 32;
 	if (img->fake == 0)
-		img->mlx = mlx_init();
-	if (img->fake == 0)
 	{
+		img->mlx = mlx_init();
 		img->mlx_win = mlx_new_window(img->mlx, img->col_win,
 				img->ligne_win, "Hello world!");
 	}
@@ -33,7 +32,7 @@ void	create_windows(t_data *img)
 	affiche_item(img);
 	img->z = 0;
 	affiche_exit(img);
-	img->fake++;
+	img->fake = 1;
 }
 
 void	affiche_wall(t_data *img)

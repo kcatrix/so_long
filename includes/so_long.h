@@ -25,6 +25,8 @@ typedef struct	s_data {
 	int		endian;
 	int		p_l;
 	int		p_c;
+	int		p_l_save;
+	int		p_c_save;
 	int		e;
 	int		c;
 	int 	taille_img;
