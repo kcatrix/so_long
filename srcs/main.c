@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/20 23:14:09 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 14:29:12 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,66 @@ int	deal_key(int key, t_data *img)
 		exit('exit');
 	if(key == 13)
 	{
+		if (img->map[img->p_l - 1][img->p_c] == '1')
+			return (0);
+		if (img->map[img->p_l - 1][img->p_c] == 'C')
+			img->c--;
+		if (img->map[img->p_l - 1][img->p_c] == 'E' && img->c == 0)
+			exit('exit');
+		if (img->map[img->p_l - 1][img->p_c] == 'E' && img->c > 0)
+			return (0);
 		mlx_clear_window(img->mlx, img->mlx_win);
-		img->p_l_save = img->p_l;
-		img->p_c_save = img->p_c;
 		img->map[img->p_l][img->p_c] = '0';
-		img->map[img->p_l][img->p_c + 32] = 'P';
+		img->map[img->p_l - 1][img->p_c] = 'P';
+		img->p_l--;
+		create_windows(img);
+	}
+	if(key == 1)
+	{
+		if (img->map[img->p_l + 1][img->p_c] == '1')
+			return (0);
+		if (img->map[img->p_l + 1][img->p_c] == 'C')
+			img->c--;
+		if (img->map[img->p_l + 1][img->p_c] == 'E' && img->c == 0)
+			exit('exit');
+		if (img->map[img->p_l + 1][img->p_c] == 'E' && img->c > 0)
+			return (0);
+		mlx_clear_window(img->mlx, img->mlx_win);
+		img->map[img->p_l][img->p_c] = '0';
+		img->map[img->p_l + 1][img->p_c] = 'P';
+		img->p_l++;
+		create_windows(img);
+	}
+	if(key == 0)
+	{
+		if (img->map[img->p_l][img->p_c - 1] == '1')
+			return (0);
+		if (img->map[img->p_l][img->p_c - 1] == 'C')
+			img->c--;
+		if (img->map[img->p_l][img->p_c - 1] == 'E' && img->c == 0)
+			exit('exit');
+		if (img->map[img->p_l][img->p_c - 1] == 'E' && img->c > 0)
+			return (0);
+		mlx_clear_window(img->mlx, img->mlx_win);
+		img->map[img->p_l][img->p_c] = '0';
+		img->map[img->p_l][img->p_c - 1] = 'P';
+		img->p_c--;
+		create_windows(img);
+	}
+	if(key == 2)
+	{
+		if (img->map[img->p_l][img->p_c + 1] == '1')
+			return (0);
+		if (img->map[img->p_l][img->p_c + 1] == 'C')
+			img->c--;
+		if (img->map[img->p_l][img->p_c + 1] == 'E' && img->c == 0)
+			exit('exit');
+		if (img->map[img->p_l][img->p_c + 1] == 'E' && img->c > 0)
+			return (0);
+		mlx_clear_window(img->mlx, img->mlx_win);
+		img->map[img->p_l][img->p_c] = '0';
+		img->map[img->p_l][img->p_c + 1] = 'P';
+		img->p_c++;
 		create_windows(img);
 	}
 	return (0);
