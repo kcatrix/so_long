@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:06:56 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/20 22:47:05 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 14:39:22 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	affiche_back(t_data *img)
 	int		i;
 	int		y;
 
-	img->relative_path = "/Users/kevyn/Desktop/so_long/img/back.xpm";
+	img->relative_path = "img/back.xpm";
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)

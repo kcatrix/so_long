@@ -6,13 +6,13 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/16 12:00:38 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 15:15:38 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	stock_map(t_data *img)
+int	stock_map(t_data *img, char *arg)
 {
 	int fd;
 	int i;
@@ -21,7 +21,18 @@ int	stock_map(t_data *img)
 	char *s;
 	
 	i = 0;
-	fd = open("map/map.ber", O_RDONLY);
+	fd = open(arg, O_DIRECTORY);
+	if (fd != -1)
+	{
+		printf("la map est un dossier\n");
+		return (0);
+	}
+	fd = open(arg, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("map introuvable\n");
+		return (0);
+	}
 	while (get_next_line(fd, &s))
 	{
 		if (s != NULL)
@@ -54,7 +65,7 @@ int	verif_ligne_first(char **str, t_data *img)
 	{
 		if (str[0][i] != '1')
 		{
-			printf("erreur sur la premiere ligne");
+			printf("erreur sur la premiere ligne\n");
 			return(0);
 		}
 		i++;
@@ -80,7 +91,7 @@ int	verif_ligne_last(char **str, t_data *img)
 	{
 		if (str[j - 1][i] != '1')
 		{
-			printf("erreur sur la derniere ligne");
+			printf("erreur sur la derniere ligne\n");
 			return(0);
 		}
 		i++;
@@ -101,12 +112,12 @@ int	verif_wall(char **str, t_data *img)
 	{
 		if (str[i][0] != '1')
 		{
-			printf("erreur de mur");
+			printf("erreur de mur\n");
 			return (0);
 		}
 		if (str[i][img->nombredecarct - 1] != '1')
 		{
-			printf("erreur de mur");
+			printf("erreur de mur\n");
 			return (0);
 		}
 		i++;
@@ -129,7 +140,7 @@ int	verif_nbcaract(char **str, t_data *img)
 		{
 			if (y >= img->nombredecarct)
 			{
-				printf("erreur nombre de caractere par ligne");
+				printf("erreur nombre de caractere par ligne\n");
 				return (0);
 			}
 			y++;

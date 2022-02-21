@@ -23,6 +23,7 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		p;
 	int		p_l;
 	int		p_c;
 	int		p_l_save;
@@ -34,6 +35,7 @@ typedef struct	s_data {
 	int		size_img;
 	int		x;
 	int		z;
+	int		compteur;
 	char	*relative_path;
 	char	**map;
 }				t_data;
@@ -42,7 +44,7 @@ int		main(int argc, char **argv);
 int		parse(t_data *img, char *arg);
 int		avance(t_data *img, char *arg);
 int		verif_ber(char *arg, int i);
-int		stock_map(t_data *img);
+int		stock_map(t_data *img, char *arg);
 int		verif_wall(char **str, t_data *img);
 int		verif_ligne_first(char **str, t_data *img);
 int		verif_ligne_last(char **str, t_data *img);
@@ -56,5 +58,9 @@ void	affiche_caractere(t_data *img);
 void	affiche_item(t_data *img);
 void	affiche_exit(t_data *img);
 void	create_windows(t_data *img);
+int		up(t_data *img);
+int		down(t_data *img);
+int		left(t_data *img);
+int 	right(t_data *img);
 
 #endif

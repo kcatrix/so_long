@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: operculesanguinaire <operculesanguinair    +#+  +:+       +#+        */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:09:03 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/14 14:52:40 by operculesan      ###   ########.fr       */
+/*   Updated: 2022/02/21 15:44:50 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	parse(t_data *img, char *arg)
 {
 	if(avance(img , arg) == 0)
 	{
-		write(1, "erreur dans le nom de la map", 28);
+		printf("Erreur dans le nom de la map\n");
 		return(0);
 	}
-	if (stock_map(img) == 0)
+	if (stock_map(img, arg) == 0)
 		return (0);
 	return(1);
 }
@@ -29,6 +29,7 @@ int	avance(t_data *img, char *arg)
 	int i;
 
 	i = 0;
+	img->p = 0;
 	while(arg[i])
 	{
 		if(arg[i] == '.')
@@ -85,18 +86,25 @@ int	verif_item(char **str, t_data *img)
 				img->e++;
 			if (str[i][y] == 'P')
 			{
+				img->p++;
 				img->fake++;
 				img->p_l = i;
 				img->p_c = y;
+			}
+			if (str[i][y] != '1' && str[i][y] != '0' && str[i][y] != 'P' 
+				&& str[i][y] != 'E' && str[i][y] != 'C')
+			{
+				printf("caractère non reconnue\n");
+				return (0);
 			}
 			y++;
 		}
 		y = 0;
 		i++;
 	}
-	if (img->c == 0 || img->e == 0 || img->fake == 0)
+	if (img->c == 0 || img->e == 0 || img->fake == 0 || img->p > 1)
 	{
-		printf("Erreur manque un ou plusieur caractéres\n");
+		printf("Erreur : manque un ou plusieurs caractères\n");
 		return(0);
 	}
 	return(1);

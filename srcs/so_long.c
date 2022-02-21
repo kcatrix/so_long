@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:45:10 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/20 23:14:46 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 14:43:29 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	create_windows(t_data *img)
 	{
 		img->mlx = mlx_init();
 		img->mlx_win = mlx_new_window(img->mlx, img->col_win,
-				img->ligne_win, "Hello world!");
+				img->ligne_win, "so_long");
 	}
 	img->taille_img = 32;
-	//affiche_back(img);
 	img->z = 0;
 	affiche_wall(img);
 	img->z = 0;
@@ -40,7 +39,7 @@ void	affiche_wall(t_data *img)
 	int		i;
 	int		y;
 
-	img->relative_path = "/Users/kevyn/Desktop/so_long/img/WALL.xpm";
+	img->relative_path = "img/WALL.xpm";
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)
@@ -64,7 +63,7 @@ void	affiche_caractere(t_data *img)
 	int		i;
 	int		y;
 
-	img->relative_path = "/Users/kevyn/Desktop/so_long/img/caractere.xpm";
+	img->relative_path = "img/caractere.xpm";
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)
@@ -88,7 +87,7 @@ void	affiche_item(t_data *img)
 	int		i;
 	int		y;
 
-	img->relative_path = "/Users/kevyn/Desktop/so_long/img/item.xpm";
+	img->relative_path = "img/item.xpm";
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)
@@ -112,7 +111,7 @@ void	affiche_exit(t_data *img)
 	int		i;
 	int		y;
 
-	img->relative_path = "/Users/kevyn/Desktop/so_long/img/Exit.xpm";
+	img->relative_path = "img/Exit.xpm";
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)
