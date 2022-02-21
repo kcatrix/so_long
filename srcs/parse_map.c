@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:15:40 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/21 15:15:38 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 16:56:10 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 int	stock_map(t_data *img, char *arg)
 {
-	int fd;
-	int i;
-	int j;
-	char **str;
-	char *s;
-	
+	int		fd;
+	int		i;
+	char	*s;
+
 	i = 0;
-	fd = open(arg, O_DIRECTORY);
-	if (fd != -1)
-	{
-		printf("la map est un dossier\n");
+	fd = 0;
+	if (test_directory(fd, arg) == 0)
 		return (0);
-	}
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)
 	{
@@ -41,32 +36,22 @@ int	stock_map(t_data *img, char *arg)
 	}
 	img->nombredeligne = i;
 	close(fd);
-	str = malloc(sizeof(char *) * i);
-	j = 0;
-	fd = open("map/map.ber", O_RDONLY);
-	while(j < i)
-	{
-		str[j] = get_next_line(fd, &str[j]);
-		j++;
-	}
-	j = 0;
-	close(fd);
-	if (verif_ligne_first(str, img) == 0)
-		return(0);
+	if (stock_map2(i, fd, img) == 0)
+		return (0);
 	return (1);
 }
 
 int	verif_ligne_first(char **str, t_data *img)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while(str[0][i] != '\n' && str[0][i])
+	while (str[0][i] != '\n' && str[0][i])
 	{
 		if (str[0][i] != '1')
 		{
 			printf("erreur sur la premiere ligne\n");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
@@ -82,8 +67,8 @@ int	verif_ligne_first(char **str, t_data *img)
 
 int	verif_ligne_last(char **str, t_data *img)
 {
-	int j;
-	int i;
+	int	j;
+	int	i;
 
 	i = 0;
 	j = img->nombredeligne;
@@ -92,23 +77,23 @@ int	verif_ligne_last(char **str, t_data *img)
 		if (str[j - 1][i] != '1')
 		{
 			printf("erreur sur la derniere ligne\n");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
 	if (verif_wall(str, img) == 0)
-		return (0);	
-	return(1);
+		return (0);
+	return (1);
 }
 
 int	verif_wall(char **str, t_data *img)
 {
-	int i;
-	int y;
+	int	i;
+	int	y;
 
 	i = 0;
 	y = 0;
-	while(i < img->nombredeligne)
+	while (i < img->nombredeligne)
 	{
 		if (str[i][0] != '1')
 		{
@@ -129,14 +114,14 @@ int	verif_wall(char **str, t_data *img)
 
 int	verif_nbcaract(char **str, t_data *img)
 {
-	int i;
-	int y;
+	int	i;
+	int	y;
 
 	i = 0;
 	y = 0;
 	while (i < img->nombredeligne)
 	{
-		while(str[i][y] != '\n' && str[i][y])
+		while (str[i][y] != '\n' && str[i][y])
 		{
 			if (y >= img->nombredecarct)
 			{
@@ -149,6 +134,6 @@ int	verif_nbcaract(char **str, t_data *img)
 		i++;
 	}
 	if (verif_item(str, img) == 0)
-			return (0);
+		return (0);
 	return (1);
 }

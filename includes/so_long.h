@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/21 16:17:56 by kevyn             #+#    #+#             */
+/*   Updated: 2022/02/21 17:21:28 by kevyn            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -11,7 +23,8 @@
 # include "../lib/libft/libft.h"
 # include "../mlx/mlx.h"
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	void	*mlx;
 	void	*mlx_win;
@@ -30,7 +43,7 @@ typedef struct	s_data {
 	int		p_c_save;
 	int		e;
 	int		c;
-	int 	taille_img;
+	int		taille_img;
 	int		fake;
 	int		size_img;
 	int		x;
@@ -38,6 +51,8 @@ typedef struct	s_data {
 	int		compteur;
 	char	*relative_path;
 	char	**map;
+	int		i;
+	int 	y;
 }				t_data;
 
 int		main(int argc, char **argv);
@@ -50,7 +65,7 @@ int		verif_ligne_first(char **str, t_data *img);
 int		verif_ligne_last(char **str, t_data *img);
 int		verif_nbcaract(char **str, t_data *img);
 int		verif_item(char **str, t_data *img);
-void    stock_map_s(char **str, t_data *img);
+void	stock_map_s(char **str, t_data *img);
 void	push_destroy(t_data *img);
 void	affiche_back(t_data *img);
 void	affiche_wall(t_data *img);
@@ -61,6 +76,10 @@ void	create_windows(t_data *img);
 int		up(t_data *img);
 int		down(t_data *img);
 int		left(t_data *img);
-int 	right(t_data *img);
+int		right(t_data *img);
+int		test_directory(int fd, char *arg);
+int		stock_map2(int i, int fd, t_data *img);
+int		verif_item2(t_data *img, char **str);
+int		verif_item_3(t_data *img, char **str);
 
 #endif

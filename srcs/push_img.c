@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:06:56 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 14:39:22 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 17:23:41 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	push_destroy(t_data *img)
 {
 	img->img = mlx_xpm_file_to_image(img->mlx,
-		img->relative_path, &img->size_img, &img->size_img);
+			img->relative_path, &img->size_img, &img->size_img);
 	mlx_put_image_to_window(img->mlx,
 		img->mlx_win, img->img, img->x, img->z);
 	mlx_destroy_image(img->mlx, img->img);
@@ -33,7 +33,7 @@ void	affiche_back(t_data *img)
 	{
 		while (img->map[i][y] != '\n' && img->map[i][y])
 		{
-			if (img->map[i][y] == '0')	
+			if (img->map[i][y] == '0')
 				push_destroy(img);
 			img->x += 32;
 			y++;

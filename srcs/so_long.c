@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:45:10 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/21 14:43:29 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 17:24:10 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	affiche_wall(t_data *img)
 	{
 		while (img->map[i][y] != '\n' && img->map[i][y])
 		{
-			if (img->map[i][y] == '1')	
+			if (img->map[i][y] == '1')
 				push_destroy(img);
 			img->x += 32;
 			y++;

@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:31:57 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 16:12:02 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 16:28:43 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	up(t_data *img)
 	create_windows(img);
 	img->compteur++;
 	printf("%d\n", img->compteur);
-	return(1);	
+	return (1);
 }
 
 int	down(t_data *img)
@@ -49,7 +49,7 @@ int	down(t_data *img)
 	create_windows(img);
 	img->compteur++;
 	printf("%d\n", img->compteur);
-	return(1);
+	return (1);
 }
 
 int	left(t_data *img)
@@ -69,10 +69,10 @@ int	left(t_data *img)
 	create_windows(img);
 	img->compteur++;
 	printf("%d\n", img->compteur);
-	return(1);
+	return (1);
 }
 
-int right(t_data *img)
+int	right(t_data *img)
 {
 	if (img->map[img->p_l][img->p_c + 1] == '1')
 		return (0);
@@ -89,5 +89,5 @@ int right(t_data *img)
 	create_windows(img);
 	img->compteur++;
 	printf("%d\n", img->compteur);
-	return(1);
+	return (1);
 }

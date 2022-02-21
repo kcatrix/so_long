@@ -2,7 +2,7 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra $(BUFFER)
+CFLAGS = -Wall -Wextra -Werror $(BUFFER)
 
 MY_CPPFLAGS = -I$(LIBPATH) -I$(LIBFTDIR) -I$(GNLDIR)
 
