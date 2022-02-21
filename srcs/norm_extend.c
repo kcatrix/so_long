@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:33:35 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 18:15:58 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:25:20 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	stock_map2(int i, int fd, t_data *img, char *arg)
 	char	**str;
 	int		j;
 
-	
 	str = malloc(sizeof(char *) * i);
 	j = 0;
 	fd = open(arg, O_RDONLY);

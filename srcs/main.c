@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:58:37 by kcatrix           #+#    #+#             */
-/*   Updated: 2022/02/21 17:38:10 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:26:02 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	main(int argc, char **argv)
 	img.fake = 0;
 	create_windows(&img);
 	mlx_key_hook(img.mlx_win, deal_key, &img);
-	mlx_hook(img.mlx_win, 17, 1L<< 0, ciao, &img);
+	mlx_hook(img.mlx_win, 17, 1L << 0, ciao, &img);
 	mlx_loop(img.mlx);
 }
