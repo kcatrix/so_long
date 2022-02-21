@@ -26,7 +26,7 @@ OBJ = $(SRC:.c=.o)
 
 LDLIBS = $(APGNL) $(APLIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
-BUFFER = -D BUFFER_SIZE=100
+BUFFER = -D BUFFER_SIZE=1
 
 all:
 	@$(MAKE) -j $(NAME)	

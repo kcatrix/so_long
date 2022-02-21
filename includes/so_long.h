@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:17:56 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 17:21:28 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:16:23 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		down(t_data *img);
 int		left(t_data *img);
 int		right(t_data *img);
 int		test_directory(int fd, char *arg);
-int		stock_map2(int i, int fd, t_data *img);
+int		stock_map2(int i, int fd, t_data *img, char *arg);
 int		verif_item2(t_data *img, char **str);
 int		verif_item_3(t_data *img, char **str);
 

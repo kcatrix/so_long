@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:33:35 by kevyn             #+#    #+#             */
-/*   Updated: 2022/02/21 17:21:02 by kevyn            ###   ########.fr       */
+/*   Updated: 2022/02/21 18:15:58 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int	test_directory(int fd, char *arg)
 	return (1);
 }
 
-int	stock_map2(int i, int fd, t_data *img)
+int	stock_map2(int i, int fd, t_data *img, char *arg)
 {
 	char	**str;
 	int		j;
 
+	
 	str = malloc(sizeof(char *) * i);
 	j = 0;
-	fd = open("map/map.ber", O_RDONLY);
+	fd = open(arg, O_RDONLY);
 	while (j < i)
 	{
 		str[j] = get_next_line(fd, &str[j]);
